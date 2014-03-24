@@ -1,4 +1,4 @@
-from bottle import route, run
+from bottle import route, run, abort
 import re
 import urllib2
 from BeautifulSoup import BeautifulSoup
@@ -14,7 +14,7 @@ def index(name):
     soup = BeautifulSoup(urllib2.urlopen(contenturl).read())
     return parse_timetable(soup)
   else:
-    abort(404, 'ERRORE')  
+    abort(404, 'ERRORE: devi richiamare url /primo /secondo o /terzo')  
 
 def parse_timetable(soup):
 
